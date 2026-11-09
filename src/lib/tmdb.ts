@@ -61,6 +61,26 @@ const DEMO_MOVIES: Movie[] = [
     vote_average: 8.5,
     release_date: "1994-09-10",
   },
+  {
+    id: 19995,
+    title: "Avatar",
+    overview:
+      "En el siglo 22, un parapléjico enviado a la luna Pandora se encuentra desgarrado entre seguir sus órdenes y proteger el mundo que siente como su hogar.",
+    poster_path: "/kyeqWdyUXW608qlYkR30mRjweBD.jpg",
+    backdrop_path: "/vL5LR6WdxWPjUnFRiayjGJmG2sY.jpg",
+    vote_average: 7.6,
+    release_date: "2009-12-15",
+  },
+  {
+    id: 299536,
+    title: "Avengers: Infinity War",
+    overview:
+      "Los Vengadores y sus aliados deben estar dispuestos a sacrificarlo todo en un intento de derrotar al poderoso Thanos.",
+    poster_path: "/7WsyChvLEzGlWv2S9GODv9ywem1.jpg",
+    backdrop_path: "/bOGkgRGdhrBYJSLpGeghCjaUMj7.jpg",
+    vote_average: 8.3,
+    release_date: "2018-04-25",
+  },
 ];
 
 export async function getTrendingMovies(): Promise<Movie[]> {
@@ -95,20 +115,27 @@ export async function getMovieDetails(id: string): Promise<Movie | null> {
 }
 
 export async function searchMovies(query: string): Promise<Movie[]> {
-  if (!query) return [];
+  const cleanQuery = query.trim().toLowerCase();
+  if (!cleanQuery) return [];
+
   try {
     const res = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=f81980cf9e32014022c95b00c3b00609&query=${encodeURIComponent(query)}`,
+      `https://api.themoviedb.org/3/search/movie?api_key=f81980cf9e32014022c95b00c3b00609&query=${encodeURIComponent(cleanQuery)}`,
     );
-    if (!res.ok)
-      return DEMO_MOVIES.filter((m) =>
-        m.title.toLowerCase().includes(query.toLowerCase()),
-      );
-    const data = await res.json();
-    return data.results || [];
+    if (res.ok) {
+      const data = await res.json();
+      if (data.results && data.results.length > 0) {
+        return data.results;
+      }
+    }
   } catch {
-    return DEMO_MOVIES.filter((m) =>
-      m.title.toLowerCase().includes(query.toLowerCase()),
-    );
+    // Si falla la API externa, pasa al filtro local abajo
   }
+
+  // Filtro flexible local por título o sinopsis
+  return DEMO_MOVIES.filter(
+    (m) =>
+      m.title.toLowerCase().includes(cleanQuery) ||
+      m.overview.toLowerCase().includes(cleanQuery),
+  );
 }
