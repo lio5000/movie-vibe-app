@@ -2,7 +2,27 @@
 
 @layer base {
   body {
-    background-color: #020617;
-    color: #f8fafc;
+    background-color: #020617 !important;
+    color: #f8fafc !important;
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
   }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+/* Fallback de utilidad por si Tailwind v4 no procesa el build de Netlify */
+.max-w-6xl {
+  max-width: 72rem;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.grid-cols-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
