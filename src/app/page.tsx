@@ -2,6 +2,9 @@ import { getTrendingMovies } from "@/lib/tmdb";
 import MovieCard from "@/components/MovieCard";
 import { TrendingUp } from "lucide-react";
 
+// Le indica a Next.js que esta página se renderice dinámicamente en el servidor
+export const dynamic = "force-dynamic";
+
 export default async function HomePage() {
   const movies = await getTrendingMovies();
 
