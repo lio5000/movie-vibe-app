@@ -1,12 +1,12 @@
-# 🎬 MovieVibe - Next.js 16 Vibe Coding App
+# MovieVibe - Next.js 16 Vibe Coding App
 
 Aplicación web moderna para la búsqueda y exploración de películas desarrollada con **Next.js 16 (App Router)**, **TypeScript** y **Tailwind CSS**, guiada bajo la metodología de **Vibe Coding con IA**.
 
-## 🚀 Enlace al Proyecto Desplegado
+## Enlace al Proyecto Desplegado
 
 - **URL de Producción:** `[PEGA_AQUÍ_TU_LINK_DE_NETLIFY]`
 
-## 🛠️ Tecnologías Utilizadas
+## Tecnologías Utilizadas
 
 - **Framework:** Next.js 16 (App Router)
 - **Lenguaje:** TypeScript
@@ -15,7 +15,7 @@ Aplicación web moderna para la búsqueda y exploración de películas desarroll
 - **API:** TMDB (The Movie Database API)
 - **Despliegue:** Netlify
 
-## 📌 Funcionalidades Principales
+## Funcionalidades Principales
 
 1. **Inicio (`/`):** Banner principal y listado en tiempo real de películas en tendencia utilizando _Server Components_.
 2. **Buscador (`/search`):** Búsqueda interactiva con debounce optimizado usando _Client Components_ (`useState` y `useEffect`).
@@ -23,7 +23,7 @@ Aplicación web moderna para la búsqueda y exploración de películas desarroll
 4. **Favoritos (`/favorites`):** Colección persistente en el navegador vía `localStorage`.
 5. **Manejadores de UI:** Esqueletos de carga (`loading.tsx`) y pantallas de manejo de errores (`error.tsx`).
 
-## 💻 Instrucciones de Instalación Local
+## Instrucciones de Instalación Local
 
 ```bash
 # 1. Clonar el repositorio
