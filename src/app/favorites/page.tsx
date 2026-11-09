@@ -8,7 +8,7 @@ import { Heart } from "lucide-react";
 export default function FavoritesPage() {
   const [favorites, setFavorites] = useState<Movie[]>([]);
 
-  useEffect(() => {
+  const loadFavorites = () => {
     const saved = localStorage.getItem("movie_favorites");
     if (saved) {
       try {
@@ -16,7 +16,15 @@ export default function FavoritesPage() {
       } catch {
         setFavorites([]);
       }
+    } else {
+      setFavorites([]);
     }
+  };
+
+  useEffect(() => {
+    loadFavorites();
+    window.addEventListener("storage", loadFavorites);
+    return () => window.removeEventListener("storage", loadFavorites);
   }, []);
 
   return (
