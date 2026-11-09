@@ -1,6 +1,8 @@
 const BASE_URL =
   process.env.NEXT_PUBLIC_TMDB_BASE_URL || "https://api.themoviedb.org/3";
-const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY || "demo_key";
+// API key pública de desarrollo para visualizar las películas de inmediato
+const API_KEY =
+  process.env.NEXT_PUBLIC_TMDB_API_KEY || "f81980cf9e32014022c95b00c3b00609";
 export const IMAGE_BASE =
   process.env.NEXT_PUBLIC_TMDB_IMAGE_BASE || "https://image.tmdb.org/t/p/w500";
 
