@@ -3,11 +3,11 @@ import { notFound } from "next/navigation";
 import { Star, Calendar, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
-export default async function MovieDetailPage({
-  params,
-}: {
+type Props = {
   params: Promise<{ id: string }>;
-}) {
+};
+
+export default async function MovieDetailPage({ params }: Props) {
   const resolvedParams = await params;
   const movie = await getMovieDetails(resolvedParams.id);
 
